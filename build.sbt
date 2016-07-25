@@ -10,7 +10,9 @@ testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest, "-o", "-u", "tar
 
 inConfig(IntegrationTest)(Defaults.itSettings)
 
-val plugins = PlayJava && SbtAutoBuildPlugin && SbtDistributablesPlugin
+val plugins = PlayJava && SbtAutoBuildPlugin && SbtGitVersioning && SbtDistributablesPlugin
+
+SbtDistributablesPlugin.publishingSettings
 
 val compileDependencies = Seq(
   "uk.gov.hmrc" %% "play-ui" % "4.14.0",
@@ -32,8 +34,7 @@ val testDependencies = Seq(
   "org.pegdown" % "pegdown" % "1.6.0",
   "com.github.tomakehurst" % "wiremock" % "1.58",
   "org.seleniumhq.selenium" % "selenium-java" % "2.52.0",
-  "com.jayway.restassured" % "rest-assured" % "2.9.0",
-  "com.novocode" % "junit-interface" % "0.11"
+  "com.jayway.restassured" % "rest-assured" % "2.9.0"
 ).map(d => d % Test)
 
 libraryDependencies ++= Seq(

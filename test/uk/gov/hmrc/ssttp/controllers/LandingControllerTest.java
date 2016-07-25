@@ -24,13 +24,17 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static play.test.Helpers.contentAsString;
+import static play.test.Helpers.fakeApplication;
+import static play.test.Helpers.running;
 
 public class LandingControllerTest {
 
     @Test
     public void renderTemplate() {
-        Content html = views.html.landing.render("Welcome to Self Service Time To Pay");
-        assertThat(html.contentType(), is("text/html"));
-        assertThat(contentAsString(html), containsString("Welcome to Self Service Time To Pay"));
-    }
+        running(fakeApplication(), () -> {
+           Content html = views.html.landing.render("Self Service Time To Pay");
+            assertThat(html.contentType(), is("text/html"));
+            assertThat(contentAsString(html), containsString("You can arrange to pay your tax in instalments in some situations"));
+        });
+   }
 }
