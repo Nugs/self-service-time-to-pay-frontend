@@ -19,6 +19,7 @@ val compileDependencies = Seq(
   "uk.gov.hmrc" %% "frontend-bootstrap" % "6.5.0",
   "uk.gov.hmrc" %% "play-config" % "2.0.1",
   "uk.gov.hmrc" %% "play-graphite" % "2.0.0",
+  "uk.gov.hmrc" %% "play-auditing" % "1.5.1",
   "uk.gov.hmrc" %% "play-health" % "1.1.0",
   "uk.gov.hmrc" %% "play-json-logger" % "2.1.1",
   "uk.gov.hmrc" %% "play-partials" % "4.2.0",
